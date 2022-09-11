@@ -1,18 +1,47 @@
 name: ci-golang-workflow
+
 on: 
+  push:
+    branches:
+      - develop
   pull_request:
     branches:
       - develop
+
 jobs:
-  check-application:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go_version: ['1.17', '1.18', '>=1.18']
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3
+      - name: Checkout my github project
+        uses: actions/checkout@v3
+      
+      - name: Set up Go language
+        uses: actions/setup-go@v3
         with:
-          go-version: 1.19
-      - run: go test
-      - run: go run math.go
+          go-version: ${{ matrix.go_version }}
+
+      - name: Test project
+        run: go test -v
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout my github project
+        uses: actions/checkout@v3
+      
+      # - name: Set up Go language
+      #   uses: actions/setup-go@v3
+      #   with:
+      #     go-version: 1.19
+
+      - name: Build project
+        run: go build -v math.go
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -26,7 +55,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Docker Build and push
         id: docker_build
         uses: docker/build-push-action@v3
         with:
