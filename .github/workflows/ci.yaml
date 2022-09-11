@@ -54,7 +54,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        steps:
       - name: Checkout my github project
         uses: actions/checkout@v3
 
