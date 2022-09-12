@@ -3,8 +3,8 @@ name: ci-golang-dev-workflow
 on: 
   push:
     branches: 
-      - 'develop'
-      - 'main'
+      - develop
+      - main
 
 jobs:
   ci-build:
