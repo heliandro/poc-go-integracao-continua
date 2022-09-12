@@ -28,14 +28,35 @@ func divi(a int, b int) int {
 	return a / b
 }
 
-func hello(nome string) string {
-	var str1 string
-	str1 = "Nome: "
+func hello(nome string, str1 string, str2 string) string {
 
-	var str2 string
-	str2 = " | hello!"
+	if (nome != "" && str1 != "" && str2 != "") {
+		return nome + str1 + str2
+	}
 
-	result := str1 + nome + str2
+	if (nome != "" && str1 != "") {
+		return nome + str1
+	}
 
-	return result
+	if (nome != "" && str2 != "") {
+		return nome + str2
+	}
+
+	if (str1 != "" && str2 != "") {
+		return str1 + str2
+	}
+
+	if (str2 != "") {
+		return str2
+	}
+
+	if (str1 != "") {
+		return str1
+	}
+
+	if (nome != "") {
+		return nome
+	}
+
+	return "hello!"
 }

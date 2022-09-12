@@ -38,13 +38,92 @@ func TestDivi(t *testing.T) {
 	
 }
 
-func TestHello(t *testing.T) {
-	nome := "Helios"
-	result := hello(nome)
-	expected :=  "Nome: Helios | hello!"
+func TestHelloWithNoName(t *testing.T) {
+	result := hello("", "", "")
+	expected :=  "hello!"
 
 	if result != expected {
-		t.Errorf("Resultado da div é inválido. Resultado: %s Esperado: %s", result, expected)
+		t.Errorf("Resultado do teste hello é inválido. Resultado: %s Esperado: %s", result, expected)
 	}
-	
 }
+
+
+func TestHelloWithArg2(t *testing.T) {
+	nome := ""
+	result := hello(nome, "Ola: ", "")
+	expected :=  "Ola: "
+
+	if result != expected {
+		t.Errorf("Resultado do teste hello é inválido. Resultado: %s Esperado: %s", result, expected)
+	}
+}
+
+func TestHelloWithArg3(t *testing.T) {
+	nome := ""
+	result := hello(nome, "", "| WORLD")
+	expected :=  "| WORLD"
+
+	if result != expected {
+		t.Errorf("Resultado do teste hello é inválido. Resultado: %s Esperado: %s", result, expected)
+	}
+}
+
+func TestHelloWithArg4(t *testing.T) {
+	nome := "teste"
+	result := hello(nome, "", "")
+	expected :=  "teste"
+
+	if result != expected {
+		t.Errorf("Resultado do teste hello é inválido. Resultado: %s Esperado: %s", result, expected)
+	}
+}
+
+func TestHelloWithArg5(t *testing.T) {
+	nome := "teste"
+	result := hello(nome, "222", "")
+	expected :=  "teste222"
+
+	if result != expected {
+		t.Errorf("Resultado do teste hello é inválido. Resultado: %s Esperado: %s", result, expected)
+	}
+}
+
+func TestHelloWithArg6(t *testing.T) {
+	nome := "teste"
+	result := hello(nome, "", "333")
+	expected :=  "teste333"
+
+	if result != expected {
+		t.Errorf("Resultado do teste hello é inválido. Resultado: %s Esperado: %s", result, expected)
+	}
+}
+
+func TestHelloWithArg7(t *testing.T) {
+	nome := "teste"
+	result := hello(nome, "222", "333")
+	expected :=  "teste222333"
+
+	if result != expected {
+		t.Errorf("Resultado do teste hello é inválido. Resultado: %s Esperado: %s", result, expected)
+	}
+}
+
+func TestHelloWithArg8(t *testing.T) {
+	nome := ""
+	result := hello(nome, "222", "333")
+	expected :=  "222333"
+
+	if result != expected {
+		t.Errorf("Resultado do teste hello é inválido. Resultado: %s Esperado: %s", result, expected)
+	}
+}
+
+// func TestHelloWithNoArgs(t *testing.T) {
+// 	hello.nome := 
+// 	result := hello("a", "b", "c")
+// 	expected :=  "abc"
+
+// 	if result != expected {
+// 		t.Errorf("Resultado do teste hello é inválido. Resultado: %s Esperado: %s", result, expected)
+// 	}
+// }
