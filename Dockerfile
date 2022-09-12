@@ -2,8 +2,6 @@ FROM golang:latest
 
 WORKDIR /app
 
-COPY . .
+COPY ./math .
 
-RUN go build -o math
-
-CMD ["./math"]
+CMD [ "./math" ]
