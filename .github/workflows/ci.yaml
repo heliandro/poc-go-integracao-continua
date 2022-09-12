@@ -2,50 +2,15 @@ name: ci-golang-workflow
 
 on: 
   push:
-    branches: [ '*' ]
+    branches:
+      - '*'
+      - '!develop'
+      - '!main'
   pull_request:
-    branches: [ '*' ]
+    branches:
+      - '*'
 
 jobs:
   ci-test:
-    runs-on: ${{ matrix.os }}
-    env:
-      TESTE: 123456
-    strategy:
-      matrix:
-        go_version: ['1.17', '1.18', '>=1.18']
-        os: ['ubuntu-latest', 'ubuntu-18.04']
-
-    steps:
-      - name: Checkout my github project
-        uses: actions/checkout@v3
-      
-      - name: Set up Go language
-        uses: actions/setup-go@v3
-        with:
-          go-version: ${{ matrix.go_version }}
-
-      - name: Test project
-        run: go test -v
-
-  ci-build:
-    needs: ci-test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout my github project
-        uses: actions/checkout@v3
-
-      - name: Build project
-        run: go build -v math.go
-
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v3.1.0
-        with:
-          name: programa-go
-          path: math
-
-  ci-docker:
-    needs: ci-build
-    uses: ./.github/workflows/docker.yaml
+    uses: ./.github/workflows/testes.yaml
     secrets: inherit
