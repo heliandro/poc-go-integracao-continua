@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: heliandro/poc-go-integracao-continua:latest
+          tags: heliandro/poc-go-integracao-continua:${{ github.ref_name }}
