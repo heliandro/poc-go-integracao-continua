@@ -12,7 +12,7 @@ func TestSoma(t *testing.T) {
 }
 
 func TestSub(t *testing.T) {
-	total := multi(6, 4);
+	total := sub(6, 4);
 
 	if total != 2 {
 		t.Errorf("Resultado da sub é inválido. Resultado: %d Esperado: %d", total, 2)
