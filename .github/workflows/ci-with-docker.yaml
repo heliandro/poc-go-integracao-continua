@@ -1,0 +1,20 @@
+name: ci-golang-workflow
+
+on: 
+  pull_request:
+    branches: [ 'develop', 'main' ]
+
+jobs:
+  ci-test:
+    uses: ./.github/workflows/testes.yaml
+    secrets: inherit
+
+  ci-build:
+    needs: ci-test
+    uses: ./.github/workflows/build.yaml
+    secrets: inherit
+
+  ci-docker:
+    needs: ci-build
+    uses: ./.github/workflows/docker.yaml
+    secrets: inherit

@@ -1,0 +1,25 @@
+name: testes-workflow
+
+on: 
+  workflow_call
+
+jobs:
+    test-app:
+      runs-on: ubuntu-latest
+      env:
+        TESTE: 123456
+      strategy:
+        matrix:
+          go_version: ['1.17', '1.18', '>=1.18']
+
+      steps:
+        - name: Checkout my github project
+          uses: actions/checkout@v3
+        
+        - name: Set up Go language
+          uses: actions/setup-go@v3
+          with:
+            go-version: ${{ matrix.go_version }}
+
+        - name: Test project
+          run: go test -v
