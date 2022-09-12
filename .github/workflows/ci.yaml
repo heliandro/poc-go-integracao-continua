@@ -16,5 +16,6 @@ jobs:
     secrets: inherit
 
   ci-sonarcloud:
+    needs: ci-test
     uses: ./.github/workflows/sonarcloud.yaml
     secrets: inherit
