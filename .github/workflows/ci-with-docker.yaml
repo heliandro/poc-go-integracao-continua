@@ -9,6 +9,10 @@ jobs:
     uses: ./.github/workflows/testes.yaml
     secrets: inherit
 
+  ci-sonarcloud:
+    uses: ./.github/workflows/sonarcloud.yaml
+    secrets: inherit
+
   ci-build:
     needs: ci-test
     uses: ./.github/workflows/build.yaml

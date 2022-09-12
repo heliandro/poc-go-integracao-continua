@@ -1,0 +1,15 @@
+name: sonarcloud-workflow
+
+on: 
+  workflow_call
+
+jobs:
+    scan-app:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout my github project
+          uses: actions/checkout@v3
+        
+        - name: SonarCloud Scan
+          uses: SonarSource/sonarcloud-github-action@v1.6

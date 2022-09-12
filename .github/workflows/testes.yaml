@@ -22,4 +22,4 @@ jobs:
             go-version: ${{ matrix.go_version }}
 
         - name: Test project
-          run: go test -v
+          run: go test -v -coverprofile=coverage.out
