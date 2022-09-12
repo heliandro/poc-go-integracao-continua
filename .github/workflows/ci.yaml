@@ -3,12 +3,9 @@ name: ci-golang-workflow
 on: 
   push:
     branches:
-      - '*'
-      - '!develop'
-      - '!main'
+      - develop
   pull_request:
-    branches:
-      - '*'
+    types: [opened, synchronize, reopened]
 
 jobs:
   ci-test:
