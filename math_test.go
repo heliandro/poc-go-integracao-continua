@@ -30,7 +30,7 @@ func TestMulti(t *testing.T) {
 }
 
 func TestDivi(t *testing.T) {
-	total := multi(2, 2);
+	total := divi(2, 2);
 
 	if total != 1 {
 		t.Errorf("Resultado da div é inválido. Resultado: %d Esperado: %d", total, 1)
