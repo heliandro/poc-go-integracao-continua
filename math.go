@@ -27,3 +27,15 @@ func multi(a int, b int) int {
 func divi(a int, b int) int {
 	return a / b
 }
+
+func hello(nome string) string {
+	var str1 string
+	str1 = "Nome: "
+
+	var str2 string
+	str2 = " | hello!"
+
+	result := str1 + nome + str2
+
+	return result
+}

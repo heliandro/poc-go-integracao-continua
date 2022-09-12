@@ -37,3 +37,14 @@ func TestDivi(t *testing.T) {
 	}
 	
 }
+
+func TestHello(t *testing.T) {
+	nome := "Helios"
+	result := hello(nome)
+	expected :=  "Nome: Helios | hello!"
+
+	if result != expected {
+		t.Errorf("Resultado da div é inválido. Resultado: %s Esperado: %s", result, expected)
+	}
+	
+}
