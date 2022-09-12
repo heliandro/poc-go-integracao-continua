@@ -19,3 +19,12 @@ func TestSub(t *testing.T) {
 	}
 	
 }
+
+func TestMulti(t *testing.T) {
+	total := multi(5, 5);
+
+	if total != 25 {
+		t.Errorf("Resultado da multi é inválido. Resultado: %d Esperado: %d", total, 25)
+	}
+	
+}
